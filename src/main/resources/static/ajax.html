@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function ajaxcall(method)
+		{
+			console.log(method);
+			var url="http://localhost:8080/ajax";
+			var xhttp=new XMLHttpRequest();
+			xhttp.onreadystatechange=function()
+			{
+				if(this.readyState==4 && this.status==200)
+					{
+						document.getElementById("output").innerHTML=this.responseText;
+					}
+			};
+			xhttp.open(method,url,true);
+			xhttp.send();
+		}
+	</script>
+</head>
+<body>
+	Click on the text to invoke the corresponding HTTP method
+	<p><a onclick="ajaxcall('get')">get</a>
+	<p><a onclick="ajaxcall('post')">post</a>
+	<p><a onclick="ajaxcall('put')">put</a>
+	<p><a onclick="ajaxcall('delete')">delete</a>
+	
+	<div id="output"></div>
+</body>
+</html>
